@@ -1,0 +1,20 @@
+FROM node:18-alpine
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# Copy repo into image
+COPY . /usr/src/app
+
+# Install dependencies and install pm2 from local repo globally
+RUN apk add --no-cache make g++ python3 git bash
+RUN npm ci --no-audit --no-fund
+RUN npm install -g . --unsafe-perm
+
+# symlink pm2 to /usr/local/bin (npm global usually does that)
+
+# Make test script runnable
+RUN chmod +x /usr/src/app/docker_test.sh
+
+# Default command is an interactive shell
+CMD ["/bin/sh"]

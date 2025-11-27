@@ -87,6 +87,7 @@ runUnitTest $D/json_validation.mocha.js
 runUnitTest $D/env_switching.js
 runUnitTest $D/configuration.mocha.js
 runUnitTest $D/id.mocha.js
+runUnitTest $D/restart-delay.mocha.js
 
 runUnitTest $D/god.mocha.js
 runUnitTest $D/dump.mocha.js
